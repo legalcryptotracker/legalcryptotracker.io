@@ -1,0 +1,127 @@
+@import "bootstrap/export";
+@import "colors/export";
+
+// Breakpoints
+$max-mobile-width: 767px;
+$min-tablet-width: 768px;
+$max-tablet-width: 1439px;
+$min-desktop-width: 1440px;
+
+// Fonts
+$default-font-color: #0B2041;
+
+%ui-default-font {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: normal;
+  color: $default-font-color;
+}
+
+body {
+  @extend %ui-default-font;
+}
+
+// Buttons
+.ui-button-without-styles {
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+// Scroll
+$scroll-color: #CDE0F1;
+$scroll-background-color: #EEF6FD;
+
+* {
+  scrollbar-color: $scroll-color $scroll-background-color;
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: $scroll-background-color;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $scroll-color;
+  border-radius: 4px;
+}
+
+body::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+$values: (0, 4, 8, 12, 16, 20, 24, 28, 32, 40);
+$sides: (top, bottom, left, right);
+@each $value in $values {
+  @each $side in $sides {
+    .m-#{str-slice($side, 0, 1)}-#{$value} {
+      margin-#{$side}: #{$value}px !important;
+    }
+  }
+}
+
+// Fields
+$input-border-color: #DBE6F1;
+$input-color: $default-font-color;
+$input-background-color: #F4F8FC;
+$input-placeholder-color: #7997C3;
+$input-min-height: 46px;
+
+.ui-field-wrapper {
+  .input-group-text, input, select  {
+    background-color: $input-background-color;
+    color: $input-color;
+    border-color: $input-border-color;
+  }
+
+  input:focus {
+    color: $input-color;
+    background-color: white;
+  }
+
+  input::-webkit-input-placeholder {
+    color: $input-placeholder-color;
+  }
+
+  input:-moz-placeholder {
+    color: $input-placeholder-color;
+  }
+
+  &.is-invalid {
+    .input-group-text, input, select  {
+      background-color: #FBECEC;
+      color: #D53E45;
+      border-color: #F3C9CB;
+    }
+
+    input:focus {
+      color: #D53E45;
+      background-color: white;
+    }
+
+    input::-webkit-input-placeholder {
+      color: #F3C9CB;
+    }
+
+    input:-moz-placeholder {
+      color: #F3C9CB;
+    }
+
+    .invalid-feedback {
+      font-size: 12px;
+      color: #EC8596;
+    }
+  }
+}
+
+// Utils
+.height-100-per-cent {
+  height: 100% !important;
+}
+
+// Card
+$card-line-border: 1px solid rgba(205, 224, 241, .5);
