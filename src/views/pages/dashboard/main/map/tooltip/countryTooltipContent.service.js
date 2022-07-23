@@ -4,13 +4,10 @@ import TooltipContent from './TooltipContent'
 import router from '@/router'
 
 export class CountryTooltipContentService {
-  getTemplate (country, watchlist) {
+  getTemplate (country, viewmodel) {
     return this.generateTemplateFromComponent(TooltipContent, {
       router,
-      data: {
-        country,
-        watchlist
-      }
+      data: { country, viewmodel }
     })
   }
 

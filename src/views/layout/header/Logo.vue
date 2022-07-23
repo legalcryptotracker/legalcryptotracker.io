@@ -1,9 +1,10 @@
 <template>
-  <img class="ui-logo" src="@/assets/scss/images/logo.svg"/>
+  <!-- NOTE: CT logo will be here -->
+  <img class="ui-logo" src="@/assets/scss/images/logo-cryptotracker.png"/>
 </template>
 
 <style>
 .ui-logo {
-  height: 28px;
+  height: 45px;
 }
 </style>

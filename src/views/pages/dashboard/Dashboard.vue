@@ -1,57 +1,29 @@
 <template>
-  <b-container fluid>
-    <b-row>
-      <b-col class="m-b-16" cols="12" xxl="10">
-        <MainBlock></MainBlock>
-      </b-col>
-
-      <b-col v-if="isDesktopScreen" class="m-b-16" cols="2">
-        <FiltersCard></FiltersCard>
-      </b-col>
-    </b-row>
-
-    <b-row>
-      <b-col class="m-b-16" cols="12">
-        <NewsBlock></NewsBlock>
-      </b-col>
-    </b-row>
-
-    <b-row>
-      <b-col class="m-b-16" cols="12">
-        <AboutBlock></AboutBlock>
-      </b-col>
-    </b-row>
-
-    <b-row>
-      <b-col cols="12">
-        <ContributingOrganizations></ContributingOrganizations>
-      </b-col>
-    </b-row>
-  </b-container>
+  <Layout :viewmodel="viewmodel">
+    <MainBlock :viewmodel="viewmodel"></MainBlock>
+  </Layout>
 </template>
 
 <script>
+import DashboardViewmodel from '@/viewmodels/dashboard.js';
+import Layout from '@/views/layout/Layout.vue'
 import MainBlock from './main/Block.vue'
 import FiltersCard from './filters/Card'
 import NewsBlock from './news/Block'
 import AboutBlock from './about/Block'
 import ContributingOrganizations from './contributingOrganizations/Block'
-import { MODULE_NAMES } from '@/store'
-import { mapActions, mapMutations } from 'vuex'
-import { DASHBOARD_ACTION_TYPES } from '@/store/modules/dashboard/actions'
-import { DASHBOARD_MUTATION_TYPES } from '@/store/modules/dashboard/mutations'
-import { CURRENCY_TABLE_SETTINGS_ACTION_TYPES } from '@/store/modules/currencyTableSettings/actions'
-import { screenSizeMixin } from '@/mixins/screenSize.mixin'
 import { SEO_DASHBOARD } from '@/constants/seo'
 
 export default {
   components: {
+    Layout,
     MainBlock,
     FiltersCard,
     NewsBlock,
     AboutBlock,
     ContributingOrganizations
   },
+
   metaInfo: {
     title: SEO_DASHBOARD.TITLE,
     meta: [
@@ -65,38 +37,13 @@ export default {
       }
     ]
   },
-  mixins: [screenSizeMixin],
-  async created () {
-    await Promise.all([
-      this.fetchCurrencies(),
-      this.fetchTableColumns(),
-      this.fetchHistoryOfChanges(),
-      this.fetchCountries(),
-      this.fetchCurrencyNames(),
-      this.fetchTechnologies(),
-      this.fetchTechnologyName(),
-      this.fetchFirstNews()
-    ])
+
+  data () {
+    return { viewmodel: null };
   },
-  destroyed () {
-    this.resetStore()
+
+  created () {
+    this.viewmodel = new DashboardViewmodel();
   },
-  methods: {
-    ...mapActions(MODULE_NAMES.DASHBOARD, {
-      fetchCurrencies: DASHBOARD_ACTION_TYPES.FETCH_CURRENCIES_DATA,
-      fetchHistoryOfChanges: DASHBOARD_ACTION_TYPES.FETCH_HISTORY_OF_CHANGES,
-      fetchCountries: DASHBOARD_ACTION_TYPES.FETCH_COUNTRIES_WITH_CURRENCIES,
-      fetchCurrencyNames: DASHBOARD_ACTION_TYPES.FETCH_CURRENCY_NAMES,
-      fetchTechnologies: DASHBOARD_ACTION_TYPES.FETCH_TECHNOLOGIES_WITH_CURRENCIES,
-      fetchTechnologyName: DASHBOARD_ACTION_TYPES.FETCH_TECHNOLOGY_NAME_WITH_CURRENCIES,
-      fetchFirstNews: DASHBOARD_ACTION_TYPES.FETCH_FIRST_NEWS
-    }),
-    ...mapActions(MODULE_NAMES.CURRENCY_TABLE_SETTINGS, {
-      fetchTableColumns: CURRENCY_TABLE_SETTINGS_ACTION_TYPES.FETCH_TABLE_COLUMNS
-    }),
-    ...mapMutations(MODULE_NAMES.DASHBOARD, {
-      resetStore: DASHBOARD_MUTATION_TYPES.RESET
-    })
-  }
 }
 </script>

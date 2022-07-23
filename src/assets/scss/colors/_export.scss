@@ -1,9 +1,9 @@
-$site-primary-color: #0f4698;
-$site-secondary-color: #EEF6FD;
+$site-primary-color: #531dbd;
+$site-secondary-color: #e8d8ff;
 
 // Statuses
-$status-research-primary-color: #6BBEAF;
-$status-research-secondary-color: #B5DED7;
+$status-research-primary-color: #9d6bbe;
+$status-research-secondary-color: #c5b5de;
 
 $status-development-primary-color: #8F81C7;
 $status-development-secondary-color: #AFA3DA;
@@ -11,19 +11,19 @@ $status-development-secondary-color: #AFA3DA;
 $status-pilot-primary-color: #E4A57C;
 $status-pilot-secondary-color: #F1CDB2;
 
-$status-launched-primary-color: #4E87D3;
-$status-launched-secondary-color: #67A8EF;
+$status-launched-primary-color: #974ed3;
+$status-launched-secondary-color: #bd67ef;
 
 $status-cancelled-primary-color: #D53E45;
 $status-cancelled-secondary-color: #ec8596;
 
-$status-none-primary-color: #DBE6F1;
-$status-none-secondary-color: #F4F8FC;
+$status-none-primary-color: #eadbf1;
+$status-none-secondary-color: #faf4fc;
 
 // Timeline
-$timeline-status-header-background-color: #E7E4F4;
-$timeline-status-main-background-color: #F3F1F9;
-$timeline-status-text-color: #8F81C7;
+$timeline-status-header-background-color: #efe4f4;
+$timeline-status-main-background-color: #f7f1f9;
+$timeline-status-text-color: #b781c7;
 
 $timeline-updated-header-background-color: #D1E5FA;
 $timeline-updated-main-background-color: #E8F2FD;
@@ -36,3 +36,8 @@ $timeline-added-text-color: #6BBEAF;
 $timeline-deleted-header-background-color: #F9DAE0;
 $timeline-deleted-main-background-color: #FCEDEF;
 $timeline-deleted-text-color: #D53E45;
+
+$init-text-color: #0B2041;
+$init-text-error-color: #E75757;
+$init-alert-bg: #FFD2D2;
+$init-highlight-color: #7997C4;

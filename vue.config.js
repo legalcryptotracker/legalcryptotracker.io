@@ -1,4 +1,9 @@
 module.exports = {
+  chainWebpack: function (config) {
+    config.plugins.delete('prefetch');
+    config.plugins.delete('preload');
+  },
+  lintOnSave: false,
   css: {
     loaderOptions: {
       scss: {
@@ -6,17 +11,4 @@ module.exports = {
       }
     }
   },
-  devServer: {
-    proxy: {
-      '/api': {
-//        target: 'https://cbdctracker.org/api',
-         target: 'http://localhost:8081/',
-        pathRewrite: { '^/api': '' }
-      },
-      '/images': {
-        target: 'https://cbdctracker.org/images',
-        pathRewrite: { '^/images': '' }
-      }
-    }
-  }
 }

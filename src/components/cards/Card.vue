@@ -4,7 +4,6 @@
       <slot name="header"></slot>
       <app-card-line v-if="hasHeader && hasContent" class="m-t-16"></app-card-line>
     </header>
-
     <slot></slot>
   </b-card>
 </template>

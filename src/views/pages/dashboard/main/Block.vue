@@ -1,55 +1,110 @@
 <template>
-  <div>
-    <app-card v-if="!isMobileScreen">
-      <template #header>
-        <Header></Header>
-      </template>
-
-      <div class="d-flex justify-content-center">
-        <MapLegend v-if="isTabletScreen" class="m-b-16"></MapLegend>
+  <section class="dashboard-main-block">
+    <div class="dashboard-main-block-header">
+      <h1>{{activeLocale.mapTitle}}</h1>
+      <div class="dashboard-main-block-header-actions">
+        <div class="field">
+          <select @change="onCountryChanged">
+            <option value="">{{activeLocale.countrySelectCountry}}</option>
+            <option
+              v-for="country in countries"
+              :value="country.slug"
+              :key="country.id">
+                {{country.name}} {{getRegulationStateTag(country)}}
+            </option>
+          </select>
+        </div>
+        <!--<MapLegend :viewmodel="viewmodel" />-->
       </div>
-
-      <Map class="m-b-16"></Map>
-
-      <HistoricState class="m-b-16"></HistoricState>
-
-      <Currencies></Currencies>
-    </app-card>
-
-    <div v-else>
-      <Header class="m-b-16"></Header>
-
-      <b-row class="m-b-16">
-        <b-col cols="12">
-          <FiltersCard></FiltersCard>
-        </b-col>
-      </b-row>
-
-      <HistoricState class="m-b-16"></HistoricState>
-
-      <Currencies></Currencies>
     </div>
-  </div>
+    <div class="dashboard-main-block-map">
+      <Map :viewmodel="viewmodel"></Map>
+    </div>
+  </section>
 </template>
 
 <script>
 import Header from './Header'
 import Map from './map/Map'
-import FiltersCard from '../filters/Card'
-import HistoricState from './historicState/HistoricState'
-import Currencies from './currencies/Block'
-import { screenSizeMixin } from '@/mixins/screenSize.mixin'
 import MapLegend from '@/views/pages/dashboard/main/MapLegend'
 
 export default {
   components: {
-    Header,
     Map,
     MapLegend,
-    HistoricState,
-    Currencies,
-    FiltersCard
   },
-  mixins: [screenSizeMixin]
+
+  props: ['viewmodel'],
+
+  data () {
+    return {
+      countries: [],
+      activeLocale: {}
+    };
+  },
+
+  mounted () {
+    this.viewmodel.observe(this.onViewmodelUpdated);
+  },
+
+  methods: {
+    onViewmodelUpdated (vm) {
+      this.activeLocale = vm.getActiveLocale();
+      this.countries = vm.getAllCountries();
+      this.$forceUpdate();
+    },
+
+    getCountryUrl: function (country) {
+      return `/country/${country.slug}`;
+    },
+
+    getRegulationStateTag: function (country) {
+      if (!country.regulation_state.data) return;
+      if (!this.activeLocale) return;
+      var stateValue = country.regulation_state.data.attributes.value;
+      var stateLocalized = this.activeLocale[stateValue];
+      return `(${stateLocalized})`;
+    },
+
+    onCountryChanged: function (e) {
+      this.viewmodel.goToCountry(e.target.value);
+    },
+  }
 }
 </script>
+
+<style lang="scss">
+  .dashboard-main-block-header {
+    padding: 20px 30px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    h1 {
+      font-weight: bold;
+      font-size: 18px;
+      color: $site-primary-color;
+      margin: 0;
+      line-height: 20px;
+    }
+
+    .dashboard-main-block-header-actions {
+      select {
+        max-width: 100%;
+      }
+    }
+  }
+
+  .dashboard-main-block-map {
+    padding: 30px;
+  }
+
+  @media (min-width: 750px) {
+    .dashboard-main-block-header {
+      flex-direction: row;
+    }
+  }
+</style>

@@ -1,35 +1,35 @@
 export const SEO_DASHBOARD = {
-  TITLE: 'Central Bank Digital Currency (CBDC) Tracker',
-  DESCRIPTION: 'Central Bank Digital Currencies are a new form of electronic money that, unlike well-known cryptocurrencies, are issued by central banks of certain countries. CBDC Tracker is an information resource for CBDC with news, updates and technology information.',
-  KEYWORDS: 'cbdc tracker, cbdc, central bank digital currency, new electronic virtual money, digital money news'
+  TITLE: 'Cryptotracker | Dashboard',
+  DESCRIPTION: 'Cryptotracker are a new form of electronic money that, unlike well-known cryptocurrencies, are issued by central banks of certain countries. Cryptotracker is an information resource for Cryptotracker with news, updates and technology information.',
+  KEYWORDS: 'Cryptotracker, new electronic virtual money, digital money news'
 }
 
 export const SEO_NEWS = {
-  TITLE: 'Central Bank Digital Currency News | CBDC Tracker',
-  DESCRIPTION: 'Latest news about Central Bank Digital Currencies (CBDC) around the globe. Announcements and status reports of digital money projects, analytics, technology reviews, forecasts gathered from several sources in one place.',
-  KEYWORDS: 'digital currency news, cbdc, central bank virtual money'
+  TITLE: 'Cryptotracker News | Cryptotracker',
+  DESCRIPTION: 'Latest news about Cryptotracker (Cryptotracker) around the globe. Announcements and status reports of digital money projects, analytics, technology reviews, forecasts gathered from several sources in one place.',
+  KEYWORDS: 'digital currency news, Cryptotracker, central bank virtual money'
 }
 
 export const SEO_CURRENCY = {
-  TITLE: 'Digital Currency | CBDC Tracker',
-  TITLE_TEMPLATE: '%s Digital Currency | CBDC Tracker',
-  DESCRIPTION: '%s Central Bank Digital Currency (CBDC) information',
+  TITLE: 'Digital Currency | Cryptotracker',
+  TITLE_TEMPLATE: 'Digital Currency | Cryptotracker',
+  DESCRIPTION: 'Cryptotracker information',
   KEYWORDS: ''
 }
 
 export const SEO_WHATCHLIST = {
-  TITLE: 'Watchlist | CBDC Tracker',
+  TITLE: 'Watchlist | Cryptotracker',
   DESCRIPTION: 'Watchlist with favourites Digital Currencies',
   KEYWORDS: ''
 }
 
 export const SEO_TIMELINE = {
-  TITLE: 'Central Bank Digital Currency (CBDC) Tracker Updates Timeline',
-  DESCRIPTION: 'Central Bank Digital Currencies are a new form of electronic money that, unlike well-known cryptocurrencies, are issued by central banks of certain countries. See the updates timeline of all the world cryptocurrencies in CBDC Tracker.',
-  KEYWORDS: 'cbdc tracker, cbdc, central bank digital currency, new electronic virtual money, timeline'
+  TITLE: 'Cryptotracker Updates Timeline',
+  DESCRIPTION: 'Cryptotracker are a new form of electronic money that, unlike well-known cryptocurrencies, are issued by central banks of certain countries. See the updates timeline of all the world cryptocurrencies in Cryptotracker.',
+  KEYWORDS: 'Cryptotracker, Cryptotracker, Cryptotracker, new electronic virtual money, timeline'
 }
 
-export const PREVIEW_IMAGE = 'https://cbdctracker.org/CBDC-splash.jpg'
+export const PREVIEW_IMAGE = 'https://Cryptotrackertracker.org/Cryptotracker-splash.jpg'
 
 export const SEO_META_TWITTER = [
   {

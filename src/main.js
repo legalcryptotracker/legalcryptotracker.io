@@ -10,6 +10,9 @@ import { SAVE_USER_SETTING_PLUGIN_MUTATION_TYPES } from '@/store/saveUserSetting
 import VueMeta from 'vue-meta'
 import VueTheMask from 'vue-the-mask'
 import VueAnalytics from 'vue-analytics'
+import { createProvider } from './vue-apollo'
+import CKEditor from '@ckeditor/ckeditor5-vue2';
+import VueSanitize from 'vue-sanitize';
 
 // Install BootstrapVue
 Vue.use(BootstrapVue, {
@@ -22,27 +25,36 @@ Vue.use(BootstrapVue, {
     'xxl' // desktop start
   ]
 })
+
 Vue.use(BootstrapVueIcons)
+
+Vue.use(CKEditor)
+
+Vue.use(VueSanitize, {
+  allowedTags: ['h1', 'h2', 'b', 'u', 'i', 'blockquote', 'ul', 'ol', 'li',
+    'a'],
+});
 
 Vue.use(VueMeta, {
   // optional pluginOptions
   refreshOnceOnNavigation: true
 })
 
-Vue.use(VueAnalytics, {
-  id: 'UA-168220041-1',
-  router
-})
+// Vue.use(VueAnalytics, {
+//   id: 'UA-168220041-1',
+//   router
+// })
 
 Vue.use(VueTheMask)
 
 Vue.config.productionTip = false
 
-new Vue({
+const app = new Vue({
   router,
   store,
-  beforeCreate () {
-    this.$store.commit(SAVE_USER_SETTING_PLUGIN_MUTATION_TYPES.INITIALIZE_LOAD_SAVED_DATA)
-  },
+  beforeCreate () { this.$store.commit(SAVE_USER_SETTING_PLUGIN_MUTATION_TYPES.INITIALIZE_LOAD_SAVED_DATA) },
+  apolloProvider: createProvider(),
   render: h => h(App)
-}).$mount('#app')
+})
+
+app.$mount('#app')

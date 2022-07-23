@@ -1,14 +1,14 @@
 <template>
   <div>
     <div v-if="isMobileScreen" class="m-b-16">
-      <app-title level="2">CBDC project</app-title>
-      Current status of Central Bank Digital Currencies (CBDC) worldwide
+      <app-title level="2">Cryptotracker </app-title>
+      Current status of Cryptotracker worldwide
     </div>
 
     <app-card class="ui-about">
       <template v-if="!isMobileScreen" #header>
-        <app-title level="2">CBDC project</app-title>
-        Current status of Central Bank Digital Currencies (CBDC) worldwide
+        <app-title level="2">Cryptotracker </app-title>
+        Current status of Cryptotracker worldwide
       </template>
 
       <b-row>
@@ -17,13 +17,13 @@
             <strong>Description</strong>
           </div>
 
-          <strong>Cancelled</strong> Countries that cancelled or decommissioned a CBDC.<br>
-          <strong>Research</strong> Countries that have conducted first explanatory CBDC research.<br>
-          <strong>Proof of Concept</strong> Countries that are in an advanced research stage and have published a CBDC
+          <strong>Cancelled</strong> Countries that cancelled or decommissioned a Cryptotracker.<br>
+          <strong>Research</strong> Countries that have conducted first explanatory Cryptotracker research.<br>
+          <strong>Proof of Concept</strong> Countries that are in an advanced research stage and have published a Cryptotracker
           proof of concept.<br>
-          <strong>Pilot</strong> Countries that have developed a CBDC that is tested in a real environment either with a
+          <strong>Pilot</strong> Countries that have developed a Cryptotracker that is tested in a real environment either with a
           limited number of parties or on a wide scale.<br>
-          <strong>Launched</strong> Countries that officially fully launched a CBDC.
+          <strong>Launched</strong> Countries that officially fully launched a Cryptotracker.
         </b-col>
 
         <b-col cols="12" xxl="6">
@@ -37,11 +37,6 @@
                 <app-external-link href="https://www.bcg.com/en-nl/publications/2020/get-ready-for-the-future-of-money"
                                    text="Get Ready for the Future of Money"></app-external-link>
               </div>
-
-              <div>
-                <app-external-link href="https://www.coindesk.com/central-bank-digital-currencies-need-decentralization"
-                                   text="Central Bank Digital Currencies Need Decentralization"></app-external-link>
-              </div>
             </b-col>
 
             <b-col class="m-b-16" cols="12" md="4">
@@ -50,7 +45,7 @@
               </div>
 
               <app-social-network-link :socialNetwork="SOCIAL_NETWORKS_NAMES.GITHUB"
-                                       href="https://github.com/liquifi-org/cbdc-tracker"
+                                       href=""
                                        text="Github"></app-social-network-link>
             </b-col>
           </b-row>
@@ -65,81 +60,101 @@
                 <template v-if="!isMobileScreen">
                   <div class="d-flex justify-content-left">
                     <div class="ui-about_contributors-group">
-                      <app-social-network-link class="ui-about_social-network-link"
-                                               :socialNetwork="SOCIAL_NETWORKS_NAMES.LINKEDIN"
-                                               href="https://www.linkedin.com/in/mikhalev/"
-                                               text="Igor Mikhalev"></app-social-network-link>
+                      <app-social-network-link
+                        class="ui-about_social-network-link"
+                        :socialNetwork="SOCIAL_NETWORKS_NAMES.LINKEDIN"
+                        href=""
+                        text="Lorem Ipsum">
+                      </app-social-network-link>
                       <br>
-                      <app-social-network-link class="ui-about_social-network-link"
-                                               :socialNetwork="SOCIAL_NETWORKS_NAMES.LINKEDIN"
-                                               href="https://www.linkedin.com/in/igor-struchkov-7a4994163/"
-                                               text="Igor Struchkov"></app-social-network-link>
+                      <app-social-network-link
+                        class="ui-about_social-network-link"
+                        :socialNetwork="SOCIAL_NETWORKS_NAMES.LINKEDIN"
+                        href=""
+                        text="Lorem Ipsum">
+                      </app-social-network-link>
                       <br>
-                      <app-social-network-link class="ui-about_social-network-link"
-                                               :socialNetwork="SOCIAL_NETWORKS_NAMES.LINKEDIN"
-                                               href="https://www.linkedin.com/in/kiffmeister/"
-                                               text="John Kiff "></app-social-network-link>
+                      <app-social-network-link
+                        class="ui-about_social-network-link"
+                        :socialNetwork="SOCIAL_NETWORKS_NAMES.LINKEDIN"
+                        href=""
+                        text="Lorem Ipsum">
+                      </app-social-network-link>
                     </div>
 
                     <div class="ui-about_contributors-group">
-                      <app-social-network-link class="ui-about_social-network-link"
-                                               :socialNetwork="SOCIAL_NETWORKS_NAMES.LINKEDIN"
-                                               href="https://www.linkedin.com/in/kaj-burchardi-b1030242/"
-                                               text="Kaj Burchardi"></app-social-network-link>
+                      <app-social-network-link
+                        class="ui-about_social-network-link"
+                        :socialNetwork="SOCIAL_NETWORKS_NAMES.LINKEDIN"
+                        href=""
+                        text="Lorem Ipsum">
+                      </app-social-network-link>
                       <br>
-                      <app-social-network-link class="ui-about_social-network-link"
-                                               :socialNetwork="SOCIAL_NETWORKS_NAMES.LINKEDIN"
-                                               href="https://www.linkedin.com/in/jonasgross94/"
-                                               text="Jonas Gross"></app-social-network-link>
+                      <app-social-network-link
+                        class="ui-about_social-network-link"
+                        :socialNetwork="SOCIAL_NETWORKS_NAMES.LINKEDIN"
+                        href=""
+                        text="Lorem Ipsum">
+                      </app-social-network-link>
                     </div>
 
                     <div class="ui-about_contributors-group">
-                      <app-social-network-link class="ui-about_social-network-link"
-                                               :socialNetwork="SOCIAL_NETWORKS_NAMES.LINKEDIN"
-                                               href="https://www.linkedin.com/in/bihaosong/"
-                                               text="Bihao Song"></app-social-network-link>
+                      <app-social-network-link
+                        class="ui-about_social-network-link"
+                        :socialNetwork="SOCIAL_NETWORKS_NAMES.LINKEDIN"
+                        href=""
+                        text="Lorem Ipsum">
+                      </app-social-network-link>
                       <br>
-                      <app-social-network-link class="ui-about_social-network-link"
-                                               :socialNetwork="SOCIAL_NETWORKS_NAMES.LINKEDIN"
-                                               href="https://www.linkedin.com/in/gourav-roy-6b5ab4a4/"
-                                               text="Gourav Roy"></app-social-network-link>
+                      <app-social-network-link
+                        class="ui-about_social-network-link"
+                        :socialNetwork="SOCIAL_NETWORKS_NAMES.LINKEDIN"
+                        href=""
+                        text="Lorem Ipsum">
+                      </app-social-network-link>
                     </div>
                   </div>
                 </template>
 
                 <template v-else>
                   <div class="ui-about_contributors-group">
-                    <app-social-network-link class="ui-about_social-network-link"
-                                             :socialNetwork="SOCIAL_NETWORKS_NAMES.LINKEDIN"
-                                             href="https://www.linkedin.com/in/mikhalev/"
-                                             text="Igor Mikhalev"></app-social-network-link>
+                    <app-social-network-link
+                      class="ui-about_social-network-link"
+                      :socialNetwork="SOCIAL_NETWORKS_NAMES.LINKEDIN"
+                      href=""
+                      text="Lorem Ipsum"></app-social-network-link>
                     <br>
-                    <app-social-network-link class="ui-about_social-network-link"
-                                             :socialNetwork="SOCIAL_NETWORKS_NAMES.LINKEDIN"
-                                             href="https://www.linkedin.com/in/bihaosong/"
-                                             text="Bihao Song"></app-social-network-link>
+                    <app-social-network-link 
+                      class="ui-about_social-network-link"
+                      :socialNetwork="SOCIAL_NETWORKS_NAMES.LINKEDIN"
+                      href=""
+                      text="Lorem Ipsum"></app-social-network-link>
                     <br>
-                    <app-social-network-link class="ui-about_social-network-link"
-                                             :socialNetwork="SOCIAL_NETWORKS_NAMES.LINKEDIN"
-                                             href="https://www.linkedin.com/in/jonasgross94/"
-                                             text="Jonas Gross"></app-social-network-link>
+                    <app-social-network-link
+                      class="ui-about_social-network-link"
+                      :socialNetwork="SOCIAL_NETWORKS_NAMES.LINKEDIN"
+                      href=""
+                      text="Lorem Ipsum"></app-social-network-link>
                   </div>
 
                   <div class="ui-about_contributors-group">
-                    <app-social-network-link class="ui-about_social-network-link"
-                                             :socialNetwork="SOCIAL_NETWORKS_NAMES.LINKEDIN"
-                                             href="https://www.linkedin.com/in/kaj-burchardi-b1030242/"
-                                             text="Kaj Burchardi"></app-social-network-link>
+                    <app-social-network-link
+                      class="ui-about_social-network-link"
+                      :socialNetwork="SOCIAL_NETWORKS_NAMES.LINKEDIN"
+                      href=""
+                      text="Lorem Ipsum"></app-social-network-link>
                     <br>
-                    <app-social-network-link class="ui-about_social-network-link"
-                                             :socialNetwork="SOCIAL_NETWORKS_NAMES.LINKEDIN"
-                                             href="https://www.linkedin.com/in/igor-struchkov-7a4994163/"
-                                             text="Igor Struchkov"></app-social-network-link>
+                    <app-social-network-link
+                      class="ui-about_social-network-link"
+                      :socialNetwork="SOCIAL_NETWORKS_NAMES.LINKEDIN"
+                      href=""
+                      text="Lorem Ipsum"></app-social-network-link>
                     <br>
-                    <app-social-network-link class="ui-about_social-network-link"
-                                             :socialNetwork="SOCIAL_NETWORKS_NAMES.LINKEDIN"
-                                             href="https://www.linkedin.com/in/gourav-roy-6b5ab4a4/"
-                                             text="Gourav Roy"></app-social-network-link>
+                    <app-social-network-link
+                      class="ui-about_social-network-link"
+                      :socialNetwork="SOCIAL_NETWORKS_NAMES.LINKEDIN"
+                      href=""
+                      text="Lorem Ipsum"></app-social-network-link>
                   </div>
                 </template>
               </div>
@@ -150,11 +165,12 @@
                 <strong>Contacts</strong>
               </div>
 
-              <app-email-link :email="'hello@cbdctracker.org'"></app-email-link>
-              <app-social-network-link class="ui-about_social-network-link"
-                                       :socialNetwork="SOCIAL_NETWORKS_NAMES.TELEGRAM"
-                                       href="https://t.me/joinchat/zyy_CB7AEMtkODlk"
-                                       text="Telegram chat"></app-social-network-link>
+              <app-email-link :email="''"></app-email-link>
+              <app-social-network-link
+                class="ui-about_social-network-link"
+                :socialNetwork="SOCIAL_NETWORKS_NAMES.TELEGRAM"
+                href=""
+                text="Telegram chat"></app-social-network-link>
             </b-col>
           </b-row>
 

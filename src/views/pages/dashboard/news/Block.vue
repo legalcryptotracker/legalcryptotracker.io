@@ -14,8 +14,8 @@
           <b-col cols="6"
                  xxl="3"
                  class="ui-news-item-wrapper"
-                 v-for="(newsItem) in newsList" :key="newsItem.tag">
-            <NewsItem :adaptiveType="NEWS_ITEM_ADAPTIVE_TYPE.MOBILE" :data="newsItem"></NewsItem>
+                 v-for="(post, index) in posts.data" v-bind:key="index">
+            <CtCard v-bind:post="post"></CtCard>
           </b-col>
         </b-row>
       </div>
@@ -23,14 +23,13 @@
 
     <div v-else>
       <NewsHeader class="m-b-16"></NewsHeader>
-
       <app-card v-if="isLoading" class="m-b-16">
         <app-spinner :hint="loaderHint"></app-spinner>
       </app-card>
 
       <div class="m-b-16" v-else>
-        <app-card :class="{'m-b-16': !(index === newsList.length - 1)}" v-for="(newsItem, index) in newsList" :key="newsItem.tag">
-          <NewsItem :adaptiveType="NEWS_ITEM_ADAPTIVE_TYPE.MOBILE" :data="newsItem"></NewsItem>
+        <app-card :class="'m-b-16'" v-for="(post, index) in posts.data" v-bind:key="index">
+          <CtCard v-bind:post="post"></CtCard>
         </app-card>
       </div>
 
@@ -46,19 +45,22 @@
 <script>
 import NewsHeader from './Header'
 import NewsItem from '@/components/news/NewsItem'
+import gql from 'graphql-tag'
 import { NEWS_ITEM_ADAPTIVE_TYPE } from '@/components/news/constants'
 import { mapActions, mapGetters, mapState } from 'vuex'
 import { MODULE_NAMES } from '@/store'
 import { DASHBOARD_ACTION_TYPES } from '@/store/modules/dashboard/actions'
 import { screenSizeMixin } from '@/mixins/screenSize.mixin'
 import { BUTTON_TYPES } from '@/components/buttons/constants'
+import CtCard from '@/components/cards/CtCard.vue'
 
 export default {
   mixins: [screenSizeMixin],
   components: {
     NewsItem,
-    NewsHeader
-  },
+    NewsHeader,
+    CtCard
+},
   data () {
     return {
       loaderHint: 'Please wait while news will be loaded',
@@ -83,8 +85,33 @@ export default {
     ...mapActions(MODULE_NAMES.DASHBOARD, {
       fetchNews: DASHBOARD_ACTION_TYPES.FETCH_NEWS_CURRENT_PAGE
     })
+  },
+  apollo: {
+    posts: gql`query{
+      posts{
+        data {
+          id
+          attributes {
+            Title
+            Author
+            Content
+            createdAt
+            Country
+            Image{
+              data{
+                attributes{
+                  formats
+                }
+              }
+            }
+          }
+        }
+      }
+    }`
   }
 }
+
+
 </script>
 
 <style lang="scss">
@@ -93,7 +120,9 @@ export default {
   }
 
   .ui-news-item-wrapper {
-    min-height: 435px;
+    margin: 0 0 30px;
+    flex: 0 0 50% !important;
+    max-width: 50% !important;
   }
 
   @media (min-width: $min-tablet-width) and (max-width: $max-tablet-width) {

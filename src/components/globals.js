@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import Button from '@/components/buttons/Button'
+import EmailInput from '@/components/fields/EmailInput'
 import StringInput from '@/components/fields/StringInput'
 import YearRange from '@/components/fields/YearRange'
 import MultipleSelect from '@/components/fields/MultipleSelect'
+import Select from '@/components/fields/Select'
 import FieldLabel from '@/components/fields/FieldLabel'
 import Status from '@/components/status/Status'
 import StatusCheckbox from '@/components/status/StatusCheckbox'
@@ -30,7 +32,6 @@ import Info from '@/components/Info'
 import Pagination from '@/components/Pagination'
 import CollapseButton from '@/components/collapse/CollapseButton'
 import CollapseBlock from '@/components/collapse/CollapseBlock'
-import EmailInput from '@/components/fields/EmailInput'
 import Modal from '@/components/modal/Modal'
 import TextButton from '@/components/buttons/TextButton'
 import ActiveElement from '@/components/ActiveElement'
@@ -68,6 +69,9 @@ const components = [{
 }, {
   name: 'app-multiple-select',
   component: MultipleSelect
+}, {
+  name: 'app-select',
+  component: Select
 }, {
   name: 'app-email-input',
   component: EmailInput

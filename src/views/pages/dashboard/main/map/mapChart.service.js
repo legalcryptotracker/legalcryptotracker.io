@@ -106,12 +106,12 @@ export class MapChartService {
       this.polygonSeries.data = Array.from(this.countriesDataMap, (v) => {
         const item = v[1]
 
-        const country = this.countriesDataMap.get(item.id)
-        const color = this.getColorByStatus(country.status)
-        const borderColor = this.getBorderColorByStatus(country.status)
+        const country = this.countriesDataMap.get(item.code);
+        const color = this.getColorByStatus(country.regulationStateValue);
+        const borderColor = this.getBorderColorByStatus(country.regulationStateValue);
 
         return {
-          id: country.id,
+          id: country.code,
           fill: am4core.color(color),
           stroke: am4core.color(borderColor),
           tooltipTemplate: this.getTooltipTemplate(country)

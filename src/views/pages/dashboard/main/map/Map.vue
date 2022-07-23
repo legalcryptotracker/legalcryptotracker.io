@@ -10,39 +10,39 @@ import { mapGetters, mapState } from 'vuex'
 import { MODULE_NAMES } from '@/store'
 
 export default {
-  computed: {
-    ...mapGetters(MODULE_NAMES.DASHBOARD, {
-      currencies: 'filteredCurrencies'
-    }),
-    ...mapState(MODULE_NAMES.WATCHLIST, {
-      watchlist: (state) => {
-        return state.list
-      }
-    }),
-    countriesDataMap () {
-      const countriesDataMapper = new CountriesDataMapper()
-      return countriesDataMapper.map(this.currencies)
-    }
+  props: ['viewmodel'],
+
+  data () {
+    return {
+      countriesMap: new Map(),
+      countries: [],
+    };
   },
-  watch: {
-    countriesDataMap () {
-      this.mapChartService && this.mapChartService.updateCountriesData(this.countriesDataMap)
-    },
-    watchlist () {
-      this.mapChartService && this.mapChartService.updateTooltipTemplates()
-    }
-  },
+
   mounted () {
+    this.viewmodel.observe(this.onViewmodelUpdated);
     this.countryTooltipContentService = new CountryTooltipContentService()
-    this.mapChartService = new MapChartService(this.$refs.mapWrapper, {
-      countriesDataMap: this.countriesDataMap,
-      getTooltipTemplate: (country) => {
-        return this.countryTooltipContentService.getTemplate(country, this.watchlist)
-      }
-    })
   },
+
   beforeDestroy () {
     this.mapChartService && this.mapChartService.destroy()
+  },
+
+  methods: {
+    onViewmodelUpdated (vm) {
+      this.countries = vm.getCountries();
+      this.countriesMap = new CountriesDataMapper();
+      this.countriesMap = this.countriesMap.map(this.countries);
+
+      if (!!this.countries.length && !this.mapChartService) {
+        this.mapChartService = new MapChartService(this.$refs.mapWrapper, {
+          countriesDataMap: this.countriesMap,
+          getTooltipTemplate: (country) => {
+            return this.countryTooltipContentService.getTemplate(country, vm)
+          }
+        });
+      }
+    }
   }
 }
 </script>

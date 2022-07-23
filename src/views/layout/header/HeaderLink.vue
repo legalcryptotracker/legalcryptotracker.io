@@ -4,7 +4,7 @@
       {{text}}
     </router-link>
 
-    <a v-if="href" :href="href" target="_blank" @click="onClick">
+    <a v-else target="_blank" @click="onClick">
       {{text}}
     </a>
 
@@ -56,7 +56,7 @@ export default {
   a {
     font-weight: bold;
     font-size: 14px;
-    color: #FFFFFF;
+    color: #FFFFFF !important;
 
     &:hover {
       color: #FFFFFF;
@@ -66,7 +66,8 @@ export default {
 
   &:hover {
     a {
-      color: #FFFFFF;
+      color: #FFFFFF !important;
+      cursor: pointer;
     }
 
     .ui-header-link_border {

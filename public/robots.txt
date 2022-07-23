@@ -1,7 +1,3 @@
 User-agent: *
 Crawl-delay: 2
-Host: https://cbdctracker.org
-Disallow: /watchlist
-Disallow: /cbdc-tracker-whitepaper.pdf
-
-Sitemap: https://cbdctracker.org/sitemap.xml
+Host: https://legalcryptotracker.io

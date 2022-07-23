@@ -1,56 +1,13 @@
 <template>
-  <div>
-    <div class="ui-dashboard-header">
-      <div class="ui-dashboard-header_title">
-        <app-title>Today's Central Bank Digital Currencies Status</app-title>
-
-        <div v-if="!isMobileScreen" class="d-flex justify-content-left align-items-center">
-          <span class="ui-dashboard-header_date-label">Database update:</span> {{ lastUpdate }}
-          <span class="ui-dashboard-header_date-separator"></span>
-          <span class="ui-dashboard-header_date-label">News update:</span> {{ lastNewsUpdate }}
+  <section class="dashboard-map">
+    <div class="main">
+      <div class="ui-dashboard-header">
+        <div class="ui-dashboard-header_title">
+          <h1>Mapa regulatorio</h1>
         </div>
-
-        <template v-if="isMobileScreen">
-          <div>
-            <span class="ui-dashboard-header_date-label">Database update:</span> {{ lastUpdate }}
-          </div>
-
-          <div>
-            <span class="ui-dashboard-header_date-label">News update:</span> {{ lastNewsUpdate }}
-          </div>
-        </template>
-      </div>
-
-      <MapLegend v-if="isDesktopScreen" class="ui-dashboard-header_statuses"></MapLegend>
-
-      <div v-if="isTabletScreen">
-        <app-clear-button v-if="isFiltersExpanded"
-                          class="m-r-32"
-                          text="Clear filtering"
-                          @click="onClearFilters"></app-clear-button>
-
-        <app-collapse-button :target="'filters' + componentId"
-                             collapseText="Hide filters"
-                             expandText="Show filters"
-                             @toggle=onToggleFilters></app-collapse-button>
       </div>
     </div>
-
-    <app-collapse-block v-if="isTabletScreen"
-                        class="m-t-16 m-b-16"
-                        :id="'filters' + componentId">
-      <app-card-line class="m-b-16"></app-card-line>
-
-      <FiltersContent ref="filters"
-                      :filters="filters"
-                      :countriesWithCurrencies="countriesWithCurrencies"
-                      :currencyNames="currencyNames"
-                      :technologiesWithCurrencies="technologiesWithCurrencies"
-                      :technologyNameWithCurrencies="technologyNameWithCurrencies"
-                      fieldCols="6"
-                      @change="changeStateFilters"></FiltersContent>
-    </app-collapse-block>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -60,18 +17,23 @@ import { screenSizeMixin } from '@/mixins/screenSize.mixin'
 import FiltersContent from '@/components/filters/Content'
 import MapLegend from './MapLegend'
 import { DASHBOARD_MUTATION_TYPES } from '@/store/modules/dashboard/mutations'
+import gql from 'graphql-tag'
 
 export default {
   mixins: [screenSizeMixin],
+
   components: {
     FiltersContent,
     MapLegend
   },
+
   data () {
     return {
-      isFiltersExpanded: false
+      isFiltersExpanded: false,
+      locale: localStorage.getItem('locale')
     }
   },
+
   computed: {
     ...mapState(MODULE_NAMES.DASHBOARD, {
       filters: (state) => {
@@ -87,6 +49,7 @@ export default {
       technologyNameWithCurrencies: 'technologyNameWithCurrencies'
     })
   },
+
   methods: {
     ...mapMutations(MODULE_NAMES.DASHBOARD, {
       changeStateFilters: DASHBOARD_MUTATION_TYPES.CHANGE_FILTERS,
@@ -99,7 +62,19 @@ export default {
       this.$refs.filters.clear()
       this.clearStateFilters()
     }
-  }
+  },
+
+  apollo: {
+    home: gql`query {
+      home {
+        data {
+          attributes {
+            Title
+          }
+        }
+      }
+    }`
+  },
 }
 </script>
 
